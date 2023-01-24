@@ -12,7 +12,7 @@
                 <span class="menu-title">Sale</span>
             </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                 aria-controls="ui-basic">
                 <i class="mdi mdi-format-list-bulleted-type menu-icon"></i>
@@ -27,6 +27,12 @@
                     </li>
                 </ul>
             </div>
+        </li> --}}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('admin/category') }}">
+                <i class="mdi mdi-format-list-bulleted-type menu-icon"></i>
+                <span class="menu-title">Categories</span>
+            </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
