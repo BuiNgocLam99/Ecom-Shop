@@ -108,11 +108,14 @@ class Index extends Component
             'status' => 'nullable',
         ]);
 
+        $category = Category::find($this->category_id);
+
         if ($this->new_image) {
-            $this->uploadedFileUrl = Cloudinary::upload($this->image->getRealPath())->getSecurePath();
+            Cloudinary::destroy($category->image);
+            $this->uploadedFileUrl = Cloudinary::upload($this->new_image->getRealPath())->getSecurePath();
         }
 
-        Category::find($this->category_id)->update([
+        $update = [
             'name' => $this->name,
             'slug' => Str::slug($this->slug),
             'description' => $this->name,
@@ -121,7 +124,9 @@ class Index extends Component
             'meta_keyword' => $this->name,
             'meta_description' => $this->name,
             'status' => $this->status == true ? 1 : 0,
-        ]);
+        ];
+
+        $category->update($update);
 
         session()->flash('message', 'Category Updated Successfully');
         $this->dispatchBrowserEvent('close-modal');
